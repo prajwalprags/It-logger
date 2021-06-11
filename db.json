@@ -17,7 +17,7 @@
 
     },
     {
-        "id": 1,
+        "id": 3,
         "message": "Changed memory workstation 005",
         "attention": false,
         "date": "03=02-2019",
@@ -39,7 +39,7 @@
         "lastName": "Smith"
       },
       {
-        "id": 1,
+        "id": 3,
         "firstName": "Sara",
         "lastName": "Wilson"
     }
