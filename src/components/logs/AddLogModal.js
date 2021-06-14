@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import techSelectOptions from '../techs/TechSelectOptions';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { func } from 'prop-types';
 import { addLog } from '../../actions/logActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import TechSelectOptions from '../techs/TechSelectOptions';
 
 const AddLogModal = ({ addLog }) => {
   const [message, setMessage] = useState('');
@@ -12,7 +12,7 @@ const AddLogModal = ({ addLog }) => {
 
   const onSubmit = () => {
     if (message === '' || tech === '') {
-      M.toast()({ html: 'Please enter a message and tech' });
+      M.toast({ html: 'Please enter a message and tech' });
     } else {
       const newLog = {
         message,
@@ -57,7 +57,7 @@ const AddLogModal = ({ addLog }) => {
               <option value='' disabled>
                 Select Technician
               </option>
-              <techSelectOptions />
+              <TechSelectOptions />
             </select>
           </div>
         </div>
@@ -92,7 +92,7 @@ const AddLogModal = ({ addLog }) => {
 };
 
 AddLogModal.propTypes = {
-  addLog: PropTypes.func.isRequired,
+  addLog: func.isRequired,
 };
 
 const modalStyle = {
