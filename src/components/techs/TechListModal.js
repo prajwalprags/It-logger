@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { func, object } from 'prop-types';
 import TechItem from './TechItem';
 import { getTechs } from '../../actions/techActions';
 
@@ -25,12 +25,12 @@ const TechListModal = ({ getTechs, tech: { techs, loading } }) => {
 };
 
 TechListModal.propTypes = {
-  tech: PropTypes.object.isRequired,
-  getTechs: PropTypes.func.isRequired,
+  tech: object.isRequired,
+  getTechs: func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  tech: state.tech,
+const mapStateToProps = ({ tech }) => ({
+  tech,
 });
 
 export default connect(mapStateToProps, { getTechs })(TechListModal);

@@ -10,19 +10,6 @@ import {
   CLEAR_CURRENT,
 } from './types';
 
-//export const getLogs = () => {
-// return async (dispatch) => {
-//  setLoading();
-
-//  const res = await fetch('/logs');
-//  const data = await res.json();
-
-//   dispatch({
-//     type: GET_LOGS,
-//    payload: data,
-//  });
-//};
-// };
 // Get logs from server
 export const getLogs = () => async (dispatch) => {
   try {
@@ -44,7 +31,6 @@ export const getLogs = () => async (dispatch) => {
 };
 
 // Add new log
-
 export const addLog = (log) => async (dispatch) => {
   try {
     setLoading();
@@ -69,8 +55,8 @@ export const addLog = (log) => async (dispatch) => {
     });
   }
 };
-// Delete log from server
 
+// Delete log from server
 export const deleteLog = (id) => async (dispatch) => {
   try {
     setLoading();
@@ -137,24 +123,17 @@ export const searchLogs = (text) => async (dispatch) => {
 };
 
 // Set current log
+export const setCurrent = (log) => ({
+  type: SET_CURRENT,
+  payload: log,
+});
 
-export const setCurrent = (log) => {
-  return {
-    type: SET_CURRENT,
-    payload: log,
-  };
-};
 // Clear current log
-
-export const clearCurrent = () => {
-  return {
-    type: CLEAR_CURRENT,
-  };
-};
+export const clearCurrent = () => ({
+  type: CLEAR_CURRENT,
+});
 
 // Set loading to true
-export const setLoading = () => {
-  return {
-    type: SET_LOADING,
-  };
-};
+export const setLoading = () => ({
+  type: SET_LOADING,
+});

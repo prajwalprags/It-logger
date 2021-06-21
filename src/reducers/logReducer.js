@@ -9,6 +9,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
 } from '../actions/types';
+
 const initialState = {
   logs: null,
   current: null,
@@ -16,42 +17,40 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
+const logReducer = (state = initialState, { payload, type }) => {
+  switch (type) {
     case GET_LOGS:
       return {
         ...state,
-        logs: action.payload,
+        logs: payload,
         loading: false,
       };
     case ADD_LOG:
       return {
         ...state,
-        logs: [...state.logs, action.payload],
+        logs: [...state.logs, payload],
         loading: false,
       };
     case DELETE_LOG:
       return {
         ...state,
-        logs: state.logs.filter((log) => log.id !== action.payload),
+        logs: state.logs.filter((log) => log.id !== payload),
         loading: false,
       };
     case UPDATE_LOG:
       return {
         ...state,
-        logs: state.log.map((log) =>
-          log.id === action.payload.id ? action.payload : log
-        ),
+        logs: state.log.map((log) => (log.id === payload.id ? payload : log)),
       };
     case SEARCH_LOGS:
       return {
         ...state,
-        logs: action.payload,
+        logs: payload,
       };
     case SET_CURRENT:
       return {
         ...state,
-        current: action.payload,
+        current: payload,
       };
     case CLEAR_CURRENT:
       return {
@@ -65,12 +64,14 @@ export default (state = initialState, action) => {
         loading: true,
       };
     case LOGS_ERROR:
-      console.error(action.payload);
+      console.error(payload);
       return {
         ...state,
-        error: action.payload,
+        error: payload,
       };
     default:
       return state;
   }
 };
+
+export default logReducer;

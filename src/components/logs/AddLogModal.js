@@ -3,25 +3,24 @@ import { connect } from 'react-redux';
 import { func } from 'prop-types';
 import { addLog } from '../../actions/logActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
+
 import TechSelectOptions from '../techs/TechSelectOptions';
 
 const AddLogModal = ({ addLog }) => {
   const [message, setMessage] = useState('');
-  const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState('');
-
+  const [attention, setAttention] = useState(false);
   const onSubmit = () => {
-    if (message === '' || tech === '') {
-      M.toast({ html: 'Please enter a message and tech' });
+    if ([message, tech].includes('')) {
     } else {
-      const newLog = {
+      M.toast({ html: 'Please enter a message and tech' });
+
+      addLog({
         message,
         attention,
         tech,
         date: new Date(),
-      };
-
-      addLog(newLog);
+      });
       M.toast({ html: `Log added by ${tech}` });
       // Clear Fields
       setMessage('');
